@@ -13,19 +13,28 @@
     <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/.mindS/tradizionale.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       
       <a-assets>
-        <img id="card" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/cards/tradizionale.jpg" />
-        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3D objs/macchiato decaf.gltf"></a-asset-item>
+        <a-asset-item id="tradizionale" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_tradizionale.gltf"></a-asset-item>
+        <a-asset-item id="decaf" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_decaf.gltf"></a-asset-item>
+        <a-asset-item id="forte" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_forte1.gltf"></a-asset-item>
+        <a-asset-item id="grosso" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_grosso.gltf"></a-asset-item>
+        <a-asset-item id="lungo" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_lungo.gltf"></a-asset-item>
+        <a-asset-item id="nero" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_nero.gltf"></a-asset-item>
+        <a-asset-item id="nostro" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_nostro.gltf"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       
-      <a-entity light="type: directional; color: #EEE; intensity: 3" position="10 10 150"></a-entity>
-      <a-entity light="type: ambient; color: #CCC; intensity: 2;"></a-entity>
+      <a-entity light="type: ambient; color: #CCC; intensity: 2.5;"></a-entity>
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane src="#card" position="0 0 0" height="0.960" width="1" rotation="0 0 0"></a-plane>
-        <a-gltf-model src="#avatarModel" light="castShadow:true;" position="0 1 0.5" scale="1 1 1" animation="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true;">
-        </a-entity>
+        <a-gltf-model src="#tradizionale" light="castShadow:true;" position="-5.2 0 -10" scale="0.5 0.5 0.5"></a-gltf-model>
+        <a-gltf-model src="#decaf" light="castShadow:true;" position="-5.2 0 -10.1" scale="0.5 0.5 0.5" animation="property: position; to: -5.2 -2.5 -10.1; dur: 10000; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#forte" light="castShadow:true;" position="-5.2 0 -10" scale="0.5 0.5 0.5" animation="property: position; to: -5.2 -5 -10.2; dur: 12000; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#grosso" light="castShadow:true;" position="-5.2 0 -10" scale="0.5 0.5 0.5" animation="property: position; to: -5.2 -7.5 -10.3; dur: 14000; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#lungo" light="castShadow:true;" position="-5.2 0 -10" scale="0.5 0.5 0.5" animation="property: position; to: -5.2 2.5 -10.1; dur: 9000; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#nero" light="castShadow:true;" position="-5.2 0 -10" scale="0.5 0.5 0.5" animation="property: position; to: -5.2 5 -10.2; dur: 15500; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#nostro" light="castShadow:true;" position="-5.2 0 -10" scale="0.5 0.5 0.5" animation="property: position; to: -5.2 7.5 -10.3; dur: 12000; easing: easeOutElastic; loop: false;"></a-gltf-model>
+      </a-entity>
       
     </a-scene>
 
