@@ -29,13 +29,12 @@
       <a-entity light="type: ambient; color: #CCC; intensity: 1.5;"></a-entity>
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane src="#card" position="0 0 0" height="0.495" width="1" rotation="0 0 0"></a-plane>
-        <a-gltf-model src="#decaf" light="castShadow:true;" position="-1.1 0 0" scale="0.1 0.1 0.1" animation="property: position; to: -1.1 0.5 0; dur: 10000; easing: easeOutElastic; loop: false;"></a-gltf-model>
-        <a-gltf-model src="#forte" light="castShadow:true;" position="-1.1 0 0" scale="0.1 0.1 0.1" animation="property: position; to: -1.1 1 0; dur: 12000; easing: easeOutElastic; loop: false;"></a-gltf-model>
-        <a-gltf-model src="#grosso" light="castShadow:true;" position="-1.1 0 0" scale="0.1 0.1 0.1" animation="property: position; to: -1.1 1.5 00; dur: 14000; easing: easeOutElastic; loop: false;"></a-gltf-model>
-        <a-gltf-model src="#lungo" light="castShadow:true;" position="-1.1 0 0" scale="0.1 0.1 0.1" animation="property: position; to: -1.1 -0.5 0; dur: 9000; easing: easeOutElastic; loop: false;"></a-gltf-model>
-        <a-gltf-model src="#nero" light="castShadow:true;" position="-1.1 0 0" scale="0.1 0.1 0.1" animation="property: position; to: -1.1 -1 0; dur: 15500; easing: easeOutElastic; loop: false;"></a-gltf-model>
-        <a-gltf-model src="#nostro" light="castShadow:true;" position="-1.1 0 0" scale="0.1 0.1 0.1" animation="property: position; to: -1.1 -1.5 0; dur: 12000; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#decaf" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 0.5 0; dur: 10000; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#forte" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 1 0; dur: 12000; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#grosso" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 1.5 00; dur: 14000; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#lungo" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 -0.5 0; dur: 9000; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#nero" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 -1 0; dur: 15500; easing: easeOutElastic; loop: false;"></a-gltf-model>
+        <a-gltf-model src="#nostro" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 -1.5 0; dur: 12000; easing: easeOutElastic; loop: false;"></a-gltf-model>
         </a-entity>
       
     </a-scene>
@@ -44,3 +43,51 @@
 </html>
 
 
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+</head>
+
+<body>
+
+    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/.mindS/tradizionale.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+
+        <a-assets>
+            <img id="card" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/cards/TRADIZIONALE.jpg" />
+            <a-asset-item id="tradizionale" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_tradizionale.gltf"></a-asset-item>
+            <a-asset-item id="decaf" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_decaf.gltf"></a-asset-item>
+            <a-asset-item id="forte" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_forte1.gltf"></a-asset-item>
+            <a-asset-item id="grosso" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_grosso.gltf"></a-asset-item>
+            <a-asset-item id="lungo" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_lungo.gltf"></a-asset-item>
+            <a-asset-item id="nero" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_nero.gltf"></a-asset-item>
+            <a-asset-item id="nostro" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_nostro.gltf"></a-asset-item>
+            
+          </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <a-entity light="type: ambient; color: #CCC; intensity: 1.5;"></a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 0" id="targetEntity">
+            <a-gltf-model src="#decaf" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 0.5 0; dur: 10000; easing: easeOutElastic; loop: false; startEvents: startAnimation;"></a-gltf-model>
+            <a-gltf-model src="#forte" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 1 0; dur: 12000; easing: easeOutElastic; loop: false; startEvents: startAnimation;"></a-gltf-model>
+            <a-gltf-model src="#grosso" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 1.5 00; dur: 14000; easing: easeOutElastic; loop: false; startEvents: startAnimation;"></a-gltf-model>
+            <a-gltf-model src="#lungo" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 -0.5 0; dur: 9000; easing: easeOutElastic; loop: false; startEvents: startAnimation;"></a-gltf-model>
+            <a-gltf-model src="#nero" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 -1 0; dur: 15500; easing: easeOutElastic; loop: false; startEvents: startAnimation;"></a-gltf-model>
+            <a-gltf-model src="#nostro" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14" animation="property: position; to: -1.1 -1.5 0; dur: 12000; easing: easeOutElastic; loop: false; startEvents: startAnimation;"></a-gltf-model>
+         </a-entity>
+
+    </a-scene>
+
+    <script>
+        document.querySelector('#targetEntity').addEventListener('targetFound', function() {
+            this.emit('startAnimation');
+        });
+    </script>
+
+</body>
+
+</html>
