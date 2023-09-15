@@ -8,12 +8,24 @@
     <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/.mindS/tradizionale.mind; smoothing: 0.5" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <img id="card" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/cards/TRADIZIONALE.jpg" />
+        <a-asset-item id="tradizionale" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_tradizionale.gltf"></a-asset-item>
         <a-asset-item id="decaf" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_decaf.gltf"></a-asset-item>
+        <a-asset-item id="forte" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_forte1.gltf"></a-asset-item>
+        <a-asset-item id="grosso" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_grosso.gltf"></a-asset-item>
+        <a-asset-item id="lungo" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_lungo.gltf"></a-asset-item>
+        <a-asset-item id="nero" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_nero.gltf"></a-asset-item>
+        <a-asset-item id="nostro" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_nostro.gltf"></a-asset-item>
       </a-assets>
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity light="type: ambient; color: #CCC; intensity: 1.5;"></a-entity>
       <a-entity id="targetEntity" mindar-image-target="targetIndex: 0">
-        <a-gltf-model id="decafModel" src="#decaf" light="castShadow:true;" position="-1.1 0 0" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model id="decafModel" src="#decaf" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="forteModel" src="#forte" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="grossoModel" src="#grosso" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="lungoModel" src="#lungo" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="neroModel" src="#nero" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="nostroModel" src="#nostro" light="castShadow:true;" position="-1.1 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
+
       </a-entity>
     </a-scene>
 
@@ -23,9 +35,44 @@
           var decafModel = document.querySelector('#decafModel');
           targetEntity.addEventListener('targetFound', function() {
               console.log('Target found! Trying to play animation...');
-              decafModel.setAttribute('animation', {
+                decafModel.setAttribute('animation', {
                   property: 'position',
                   to: '-1.1 0.5 0',
+                  dur: 10000,
+                  easing: 'easeOutElastic',
+                  loop: false
+              });
+              forteModel.setAttribute('animation', {
+                  property: 'position',
+                  to: '-1.1 1 0',
+                  dur: 10000,
+                  easing: 'easeOutElastic',
+                  loop: false
+              });
+              grossoModel.setAttribute('animation', {
+                  property: 'position',
+                  to: '-1.1 1.5 0',
+                  dur: 10000,
+                  easing: 'easeOutElastic',
+                  loop: false
+              });
+              lungoModel.setAttribute('animation', {
+                  property: 'position',
+                  to: '-1.1 -0.5 0',
+                  dur: 10000,
+                  easing: 'easeOutElastic',
+                  loop: false
+              });
+              neroModel.setAttribute('animation', {
+                  property: 'position',
+                  to: '-1.1 -1 0',
+                  dur: 10000,
+                  easing: 'easeOutElastic',
+                  loop: false
+              });
+              nostroModel.setAttribute('animation', {
+                  property: 'position',
+                  to: '-1.1 -1.5 0',
                   dur: 10000,
                   easing: 'easeOutElastic',
                   loop: false
