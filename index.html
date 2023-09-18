@@ -19,12 +19,12 @@
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity light="type: ambient; color: #CCC; intensity: 1.5;"></a-entity>
       <a-entity id="targetEntity" mindar-image-target="targetIndex: 0">
-        <a-gltf-model id="decafModel" src="#decaf" light="castShadow:true;" position="-1.2 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
-        <a-gltf-model id="forteModel" src="#forte" light="castShadow:true;" position="-1.2 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
-        <a-gltf-model id="grossoModel" src="#grosso" light="castShadow:true;" position="-1.2 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
-        <a-gltf-model id="lungoModel" src="#lungo" light="castShadow:true;" position="-1.2 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
-        <a-gltf-model id="neroModel" src="#nero" light="castShadow:true;" position="-1.2 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
-        <a-gltf-model id="nostroModel" src="#nostro" light="castShadow:true;" position="-1.2 0 0" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="decafModel" src="#decaf" light="castShadow:true;" position="-1.2 0 -0.5" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="forteModel" src="#forte" light="castShadow:true;" position="-1.2 0 -0.5" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="grossoModel" src="#grosso" light="castShadow:true;" position="-1.2 0 -0.5" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="lungoModel" src="#lungo" light="castShadow:true;" position="-1.2 0 -0.5" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="neroModel" src="#nero" light="castShadow:true;" position="-1.2 0 -0.5" scale="0.14 0.14 0.14"></a-gltf-model>
+        <a-gltf-model id="nostroModel" src="#nostro" light="castShadow:true;" position="-1.2 0 -0.5" scale="0.14 0.14 0.14"></a-gltf-model>
 
       </a-entity>
     </a-scene>
@@ -43,43 +43,43 @@
               console.log('Target found! Trying to play animation...');
                 decafModel.setAttribute('animation', {
                   property: 'position',
-                  to: '-1.2 0.55 0',
-                  dur: 10000,
+                  to: '-1.2 0.55 -0.5',
+                  dur: 13000,
                   easing: 'easeOutElastic',
                   loop: false
               });
               forteModel.setAttribute('animation', {
                   property: 'position',
-                  to: '-1.2 1.1 0',
-                  dur: 10000,
+                  to: '-1.2 1.1 -0.5',
+                  dur: 14000,
                   easing: 'easeOutElastic',
                   loop: false
               });
               grossoModel.setAttribute('animation', {
                   property: 'position',
-                  to: '-1.2 1.65 0',
+                  to: '-1.2 1.65 -0.5',
                   dur: 10000,
                   easing: 'easeOutElastic',
                   loop: false
               });
               lungoModel.setAttribute('animation', {
                   property: 'position',
-                  to: '-1.2 -0.55 0',
-                  dur: 10000,
+                  to: '-1.2 -0.55 -0.5',
+                  dur: 11000,
                   easing: 'easeOutElastic',
                   loop: false
               });
               neroModel.setAttribute('animation', {
                   property: 'position',
-                  to: '-1.2 -1.1 0',
-                  dur: 10000,
+                  to: '-1.2 -1.1 -0.5',
+                  dur: 9000,
                   easing: 'easeOutElastic',
                   loop: false
               });
               nostroModel.setAttribute('animation', {
                   property: 'position',
-                  to: '-1.2 -1.65 0',
-                  dur: 10000,
+                  to: '-1.2 -1.65 -0.5',
+                  dur: 12000,
                   easing: 'easeOutElastic',
                   loop: false
               });
