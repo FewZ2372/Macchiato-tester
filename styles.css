@@ -12,12 +12,11 @@
 }
 
 #loadingScreen img {
-    width: 50%; /* Adjust as needed */
-    max-width: 200px; /* Maximum width */
+    max-width: 100%; /* Ensure image does not exceed the width of the screen */
+    max-height: 100%; /* Ensure image does not exceed the height of the screen */
     object-fit: contain; /* Ensures the image is scaled properly */
 }
 
-/* Optional: Adding a fade-out effect for when the loading screen is hidden */
 .fade-out {
     animation: fadeOut 1s;
     opacity: 0;
