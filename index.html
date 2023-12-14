@@ -1,30 +1,57 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+<head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <div id="loadingScreen">
         <img src="assets/jpgs/LoadingScreen.png" alt="Loading Screen">
+        <!-- Button to start the AR experience -->
+        <button id="startButton">Start AR Experience</button>
     </div>
 
-    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/.mindS/tradizionale.mind" smoothing="0.9" searchRegion="0.8 0.8" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
+    <!-- Container for A-Frame and MindAR elements, hidden initially -->
+    <div id="arContent" style="display:none;">
+        <!-- Placeholder where A-Frame and MindAR elements will be injected -->
+    </div>
+
+    <script>
+      document.getElementById('startButton').addEventListener('click', function() {
+        // Hide the loading screen
+        document.getElementById('loadingScreen').style.display = 'none';
         
-        <img id="card" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/cards/TRADIZIONALE.jpg" />
-        <a-asset-item id="decaf" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_decaf.gltf"></a-asset-item>
+        // Show the AR content container
+        document.getElementById('arContent').style.display = 'block';
 
-      </a-assets>
-
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-      <a-entity light="type: ambient; color: #CCC; intensity: 1.5;"></a-entity>
-
-      <a-entity id="targetEntity" mindar-image-target="targetIndex: 0">
-        <a-gltf-model id="decafModel" src="#decaf" light="castShadow:true;" position="-1.2 0 -0.5" scale="0.14 0.14 0.14"></a-gltf-model>
-      </a-entity>
-
-    </a-scene>
-  </body>
+        // Dynamically load A-Frame and MindAR scripts
+        var aframeScript = document.createElement('script');
+        aframeScript.src = 'https://aframe.io/releases/1.4.2/aframe.min.js';
+        aframeScript.onload = function() {
+          // A-Frame is loaded, now load MindAR
+          var mindarScript = document.createElement('script');
+          mindarScript.src = 'https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js';
+          mindarScript.onload = function() {
+            // Both A-Frame and MindAR are loaded, initialize AR scene
+            var arContent = document.getElementById('arContent');
+            arContent.innerHTML = `
+              <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/.mindS/tradizionale.mind" smoothing="0.9" searchRegion="0.8 0.8" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+                <a-assets>
+                  <img id="card" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/cards/TRADIZIONALE.jpg" />
+                  <a-asset-item id="decaf" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/macchiato_decaf.gltf"></a-asset-item>
+                </a-assets>
+                <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+                <a-entity light="type: ambient; color: #CCC; intensity: 1.5;"></a-entity>
+                <a-entity id="targetEntity" mindar-image-target="targetIndex: 0">
+                  <a-gltf-model id="decafModel" src="#decaf" light="castShadow:true;" position="-1.2 0 -0.5" scale="0.14 0.14 0.14"></a-gltf-model>
+                </a-entity>
+              </a-scene>
+            `;
+          };
+          document.head.appendChild(mindarScript);
+        };
+        document.head.appendChild(aframeScript);
+      });
+    </script>
+</body>
 </html>
