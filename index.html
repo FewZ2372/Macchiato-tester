@@ -2,19 +2,19 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
-    <div id="loadingScreen">
-      <button id="startButton">Start AR Experience</button>
-      <!-- Button to start the AR experience -->
-      <img src="assets/jpgs/LoadingScreen.png" alt="Loading Screen">
-    </div>
+  <div id="loadingScreen">
+    <img src="assets/jpgs/LoadingScreen.png" alt="Loading Screen">
+    <!-- Button to start the AR experience -->
+    <button id="startButton">Start AR Experience</button>
+  </div>
 
     <!-- Container for A-Frame and MindAR elements, hidden initially -->
-    <div id="arContent" style="display:none;">
+  <div id="arContent" style="display:none;">
         <!-- Placeholder where A-Frame and MindAR elements will be injected -->
-    </div>
+  </div>
 
     <script>
       document.getElementById('startButton').addEventListener('click', function() {
