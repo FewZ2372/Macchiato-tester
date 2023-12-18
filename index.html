@@ -2,9 +2,57 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+/* Ensure the html and body take up full viewport height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Fullscreen loading screen */
+#loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    overflow: hidden; /* Prevent any kind of scroll */
+}
+
+/* Responsive image that fits the screen */
+#loadingScreen img {
+    width: 100%; /* Full container width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 90vh; /* Limit height to prevent overflow */
+    object-fit: contain; /* Ensure the image is scaled properly */
+}
+
+/* Button positioned at the bottom of the image */
+#startButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute; /* Position button over the image */
+    bottom: 10%; /* Position from bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center align */
+    z-index: 2; /* Ensure button is above the image */
+}
+</style>
 </head>
-<body>
+<!-- <body> -->
   <div id="loadingScreen">
     <img src="assets/jpgs/LoadingScreen.png" alt="Loading Screen">
     <!-- Button to start the AR experience -->

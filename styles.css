@@ -1,52 +1,46 @@
-/* CSS Reset */
-* {
+/* Ensure the html and body take up full viewport height */
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-}
-
-/* Loading Screen styles */
+/* Fullscreen loading screen */
 #loadingScreen {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center children vertically */
-    align-items: center; /* Center children horizontally */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: white;
+    overflow: hidden; /* Prevent any kind of scroll */
 }
 
+/* Responsive image that fits the screen */
 #loadingScreen img {
-    max-width: 90%;
-    max-height: 80vh; /* Limit the height to avoid vertical scrolling */
-    object-fit: contain;
+    width: 100%; /* Full container width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 90vh; /* Limit height to prevent overflow */
+    object-fit: contain; /* Ensure the image is scaled properly */
 }
 
+/* Button positioned at the bottom of the image */
 #startButton {
-    padding: 1em 2em;
-    font-size: 1em; /* 16px */
+    padding: 10px 20px;
+    font-size: 16px;
     color: white;
     background-color: #007bff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px; /* Add some space above the button */
-    text-align: center;
-}
-
-/* Ensures that the button is not too small on mobile devices */
-@media (max-width: 600px) {
-    #startButton {
-        padding: 1.5em 3em;
-        font-size: 1.2em; /* 18px */
-    }
+    position: absolute; /* Position button over the image */
+    bottom: 10%; /* Position from bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center align */
+    z-index: 2; /* Ensure button is above the image */
 }
