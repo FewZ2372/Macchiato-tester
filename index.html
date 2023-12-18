@@ -47,15 +47,15 @@ video {
 
 /* Button positioned at the bottom of the image */
 #startButton {
-    padding: 10px 25px;
-    font-size: 12px;
+    padding: 15px 15px;
+    font-size: 15px;
     color: white;
     background-color: #910202;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     position: absolute; /* Position button over the image */
-    bottom: 28%; /* Position from bottom */
+    bottom: 15%; /* Position from bottom */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Center align */
     z-index: 2; /* Ensure button is above the image */
@@ -127,7 +127,7 @@ video {
          videoElement.style.zIndex = '-1 !important';
        } else {
          // If the video element isn't available yet, try again in a short while
-         setTimeout(applyVideoStyles, 100);
+         setTimeout(applyVideoStyles, 200);
        }
        }
       });
