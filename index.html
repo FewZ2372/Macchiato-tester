@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-/*Ensure the html and body take up full viewport height */
-/*html, body {
-/*    height: 100%;
-/*    margin: 0;
-/*    padding: 0;
-/*    overflow-x: hidden; /* Prevent horizontal overflow */
-/*}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+/* Ensure the html and body take up full viewport height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+video {
+    position: fixed !important; /* Fixed position to cover the screen */
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important; /* Center the video in the screen */
+    width: 100vw !important; /* Full viewport width */
+    height: 100vh !important; /* Full viewport height */
+    object-fit: cover !important; /* Cover the full area, may crop the video */
+    z-index: -1 !important; /* Keep the video behind other content but above the background */
+  }
 
 /* Fullscreen loading screen */
 #loadingScreen {
@@ -37,15 +47,15 @@
 
 /* Button positioned at the bottom of the image */
 #startButton {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 10px 25px;
+    font-size: 12px;
     color: white;
     background-color: #910202;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     position: absolute; /* Position button over the image */
-    bottom: 10%; /* Position from bottom */
+    bottom: 28%; /* Position from bottom */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Center align */
     z-index: 2; /* Ensure button is above the image */
@@ -56,7 +66,7 @@
   <div id="loadingScreen">
     <img src="assets/jpgs/LoadingScreen.png" alt="Loading Screen">
     <!-- Button to start the AR experience -->
-    <button id="startButton">Start AR Experience</button>
+    <button id="startButton">Comenzar experiencia AR</button>
   </div>
 
     <!-- Container for A-Frame and MindAR elements, hidden initially -->
@@ -98,10 +108,28 @@
             </a-entity>
             </a-scene>
             `;
+                  // Apply styles to the video element after MindAR has initialized
+            applyVideoStyles();
           };
           document.head.appendChild(mindarScript);
         };
         document.head.appendChild(aframeScript);
+        function applyVideoStyles() {
+       var videoElement = document.querySelector('video');
+       if (videoElement) {
+         videoElement.style.position = 'fixed !important';
+         videoElement.style.top = '50% !important';
+         videoElement.style.left = '50% !important';
+         videoElement.style.transform = 'translate(-50%, -50%) !important';
+         videoElement.style.width = '100vw !important';
+         videoElement.style.height = '100vh !important';
+         videoElement.style.objectFit = 'cover !important';
+         videoElement.style.zIndex = '-1 !important';
+       } else {
+         // If the video element isn't available yet, try again in a short while
+         setTimeout(applyVideoStyles, 100);
+       }
+       }
       });
     </script>
 </body>
