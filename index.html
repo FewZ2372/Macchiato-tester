@@ -113,6 +113,23 @@ video {
           };
           document.head.appendChild(mindarScript);
         };
+        document.head.appendChild(aframeScript);
+        function applyVideoStyles() {
+       var videoElement = document.querySelector('video');
+       if (videoElement) {
+         videoElement.style.position = 'fixed !important';
+         videoElement.style.top = '50% !important';
+         videoElement.style.left = '50% !important';
+         videoElement.style.transform = 'translate(-50%, -50%) !important';
+         videoElement.style.width = '100vw !important';
+         videoElement.style.height = '100vh !important';
+         videoElement.style.objectFit = 'cover !important';
+         videoElement.style.zIndex = '-1 !important';
+       } else {
+         // If the video element isn't available yet, try again in a short while
+         setTimeout(applyVideoStyles, 200);
+       }
+       }
       });
     </script>
 </body>
