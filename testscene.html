@@ -1,23 +1,23 @@
 <html>
- 
   <head>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <!-- Include the aframe-extras library for the animation-mixer component -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.0/dist/aframe-extras.min.js"></script>
   </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="avatarModel" src="./assets/3Dobjs/Pirata_Barco_Animacion/Pirata_Barco_Animacion.gltf"></a-asset-item>
+        <img id="texture1" src="./assets/3Dobjs/Pirata_Barco_Animacion/texturas/barco/StylShip_Decks_BaseColor.png">
+      </a-assets>
+      
+      <a-entity light="type: directional; color: #EEE; intensity: 1" position="10 10 150"></a-entity>
+      <a-entity light="type: ambient; color: #CCC; intensity: 1;"></a-entity>
+      
+      <!-- Use the animation-mixer component to play animations -->
+      <a-gltf-model src="#avatarModel" material="src: #texture1" animation-mixer position="0 0 -5" scale="0.1 0.1 0.1"></a-gltf-model>
 
-<body>
+    </a-scene>
+  </body>
+</html>
 
-  <a-scene>
-
-    <a-assets>
-    <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/3Dobjs/Pirata_Barco_Animacion/Pirata_Barco_Animacion.gltf"></a-asset-item>
-    </a-assets>
-    
-    <a-entity light="type: directional; color: #EEE; intensity: 1" position="10 10 150"></a-entity>
-    <a-entity light="type: ambient; color: #CCC; intensity: 1;"></a-entity>
-
-    <a-gltf-model src="#avatarModel" light="castShadow:true;" position="0 1 0.0 0.0" scale="0.1 0.1 0.1">
-
-  </a-scene>
-
-</body>
-</html> 
