@@ -8,14 +8,13 @@
     <a-scene>
       <a-assets>
         <a-asset-item id="avatarModel" src="./assets/3Dobjs/Pirata_Barco_Animacion/Pirata_Barco_Animacion.gltf"></a-asset-item>
-        <img id="texture1" src="./assets/3Dobjs/Pirata_Barco_Animacion/StylShip_Decks_BaseColor.png">
       </a-assets>
       
-      <a-entity light="type: directional; color: #EEE; intensity: 1" position="10 10 150"></a-entity>
+      <a-entity light="type: directional; color: #EEE; intensity: 8" position="1 1 6"></a-entity>
       <a-entity light="type: ambient; color: #CCC; intensity: 1;"></a-entity>
-      
+      d
       <!-- Use the animation-mixer component to play animations -->
-      <a-gltf-model src="#avatarModel" material="src: #texture1" animation-mixer position="0 0 -5" scale="0.1 0.1 0.1"></a-gltf-model>
+      <a-gltf-model src="#avatarModel" animation-mixer position="0 0 -6" rotation= "0 90 0" scale="0.1 0.1 0.1"></a-gltf-model>
 
     </a-scene>
   </body>
