@@ -103,8 +103,8 @@ video {
             <a-entity light="type: directional; color: #EEE; intensity: 8" position="15 0.3 10"></a-entity>
             <a-entity light="type: ambient; color: #CCC; intensity: 1;"></a-entity>
             <a-entity id="targetEntity" mindar-image-target="targetIndex: 0">
-            <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-            <a-gltf-model src="#avatarModel" animation-mixer position="0 0 1" rotation= "0 90 0" scale="1 1 1"></a-gltf-model>
+              <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+              <a-gltf-model src="#avatarModel" animation-mixer position="0 0 1" rotation= "0 90 0" scale="1 1 1"></a-gltf-model>
 
             </a-entity>
             </a-scene>
@@ -116,21 +116,21 @@ video {
         };
         document.head.appendChild(aframeScript);
         function applyVideoStyles() {
-       var videoElement = document.querySelector('video');
-       if (videoElement) {
-         videoElement.style.position = 'fixed !important';
-         videoElement.style.top = '50% !important';
-         videoElement.style.left = '50% !important';
-         videoElement.style.transform = 'translate(-50%, -50%) !important';
-         videoElement.style.width = '100vw !important';
-         videoElement.style.height = '100vh !important';
-         videoElement.style.objectFit = 'cover !important';
-         videoElement.style.zIndex = '-1 !important';
-       } else {
-         // If the video element isn't available yet, try again in a short while
-         setTimeout(applyVideoStyles, 200);
-       }
-       }
+        var videoElement = document.querySelector('video');
+        if (videoElement) {
+        videoElement.style.position = 'fixed';
+        videoElement.style.top = '50%';
+        videoElement.style.left = '50%';
+        videoElement.style.transform = 'translate(-50%, -50%)';
+        videoElement.style.width = '100vw';
+        videoElement.style.height = '100vh';
+        videoElement.style.objectFit = 'cover';
+        videoElement.style.zIndex = '-1';
+  } else {
+    // If the video element isn't available yet, try again in a short while
+    setTimeout(applyVideoStyles, 200);
+  }
+}
       });
     </script>
 </body>
