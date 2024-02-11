@@ -82,11 +82,16 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('startButton').addEventListener('click', function() {
-        console.log('Button clicked');
-        document.getElementById('loadingScreen').style.display = 'none';
-        document.getElementById('arContent').style.display = 'block';
-      });
+      var startButton = document.getElementById('startButton');
+      if (startButton) {
+        startButton.addEventListener('click', function() {
+          console.log('Button clicked');
+          document.getElementById('loadingScreen').style.display = 'none';
+          document.getElementById('arContent').style.display = 'block';
+        });
+      } else {
+        console.log('Start button not found');
+      }
     });
   </script>
 </body>
