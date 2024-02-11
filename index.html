@@ -82,16 +82,19 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOM fully loaded and parsed');
       var startButton = document.getElementById('startButton');
       if (startButton) {
-        var startExperience = function() {
+        var startExperience = function(event) {
+          // Prevent any default action that might interfere
+          event.preventDefault();
           console.log('Experience started');
           document.getElementById('loadingScreen').style.display = 'none';
           document.getElementById('arContent').style.display = 'block';
         };
+        // For desktop browsers
         startButton.addEventListener('click', startExperience);
-        startButton.addEventListener('touchstart', startExperience);
+        // For mobile browsers
+        startButton.addEventListener('touchend', startExperience);
       } else {
         console.log('Start button not found');
       }
