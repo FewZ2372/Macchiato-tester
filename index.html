@@ -82,13 +82,16 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM fully loaded and parsed');
       var startButton = document.getElementById('startButton');
       if (startButton) {
-        startButton.addEventListener('click', function() {
-          console.log('Button clicked');
+        var startExperience = function() {
+          console.log('Experience started');
           document.getElementById('loadingScreen').style.display = 'none';
           document.getElementById('arContent').style.display = 'block';
-        });
+        };
+        startButton.addEventListener('click', startExperience);
+        startButton.addEventListener('touchstart', startExperience);
       } else {
         console.log('Start button not found');
       }
