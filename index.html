@@ -81,9 +81,12 @@
   </div>
 
   <script>
-    document.getElementById('startButton').addEventListener('click', function() {
-      document.getElementById('loadingScreen').style.display = 'none';
-      document.getElementById('arContent').style.display = 'block';
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('startButton').addEventListener('click', function() {
+        console.log('Button clicked');
+        document.getElementById('loadingScreen').style.display = 'none';
+        document.getElementById('arContent').style.display = 'block';
+      });
     });
   </script>
 </body>
