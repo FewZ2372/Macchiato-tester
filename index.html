@@ -3,135 +3,88 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-/* Ensure the html and body take up full viewport height */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal overflow */
-}
+    /* Ensure the html and body take up full viewport height */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* Prevent horizontal overflow */
+    }
 
-video {
-    position: fixed !important; /* Fixed position to cover the screen */
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important; /* Center the video in the screen */
-    width: 100vw !important; /* Full viewport width */
-    height: 100vh !important; /* Full viewport height */
-    object-fit: cover !important; /* Cover the full area, may crop the video */
-    z-index: -1 !important; /* Keep the video behind other content but above the background */
-  }
+    /* Fullscreen loading screen */
+    #loadingScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw; /* Full viewport width */
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      overflow: hidden; /* Prevent any kind of scroll */
+    }
 
-/* Fullscreen loading screen */
-#loadingScreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    overflow: hidden; /* Prevent any kind of scroll */
-}
+    /* Responsive image that fits the screen */
+    #loadingScreen img {
+      width: auto; /* Full container width */
+      height: auto; /* Maintain aspect ratio */
+      max-height: 100vh; /* Limit height to prevent overflow */
+      object-fit: cover; /* Ensure the image is scaled properly */
+    }
 
-/* Responsive image that fits the screen */
-#loadingScreen img {
-    width: auto; /* Full container width */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 100vh; /* Limit height to prevent overflow */
-    object-fit: cover; /* Ensure the image is scaled properly */
-}
-
-/* Button positioned at the bottom of the image */
-#startButton {
-    padding: 15px 15px;
-    font-size: 15px;
-    color: white;
-    background-color: #910202;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute; /* Position button over the image */
-    bottom: 15%; /* Position from bottom */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center align */
-    z-index: 2; /* Ensure button is above the image */
-}
-</style>
+    /* Button positioned at the bottom of the image */
+    #startButton {
+      padding: 15px 15px;
+      font-size: 15px;
+      color: white;
+      background-color: #910202;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute; /* Position button over the image */
+      bottom: 15%; /* Position from bottom */
+      left: 50%; /* Center horizontally */
+      transform: translateX(-50%); /* Center align */
+      z-index: 2; /* Ensure button is above the image */
+    }
+  </style>
+  <!-- Preload A-Frame and MindAR scripts -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 </head>
-<!-- <body> -->
+<body>
   <div id="loadingScreen">
     <img src="assets/jpgs/LoadingScreen.png" alt="Loading Screen">
-    <!-- Button to start the AR experience -->
     <button id="startButton">Comenzar experiencia AR</button>
   </div>
 
-    <!-- Container for A-Frame and MindAR elements, hidden initially -->
+  <!-- Container for A-Frame and MindAR elements, hidden initially -->
   <div id="arContent" style="display:none;">
-        <!-- Placeholder where A-Frame and MindAR elements will be injected -->
+    <a-scene embedded mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/.mindS/BarcoPirata.mind" 
+             smoothing="0.9" searchRegion="0.8 0.8" color-space="sRGB" 
+             renderer="colorManagement: true, physicallyCorrectLights" 
+             vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <img id="card" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/cards/BarcoPirata.png" crossorigin="anonymous" />
+        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/Pirata_Barco_Animacion/Pirata_Barco_Animacion.gltf"></a-asset-item>
+      </a-assets>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-entity light="type: directional; color: #EEE; intensity: 8" position="15 0.3 10"></a-entity>
+      <a-entity light="type: ambient; color: #CCC; intensity: 1;"></a-entity>
+      <a-entity id="targetEntity" mindar-image-target="targetIndex: 0">
+        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-gltf-model src="#avatarModel" animation-mixer position="0 0 1" rotation= "0 90 0" scale="1 1 1"></a-gltf-model>
+      </a-entity>
+    </a-scene>
   </div>
 
-    <script>
-      document.getElementById('startButton').addEventListener('click', function() {
-        // Hide the loading screen
-        document.getElementById('loadingScreen').style.display = 'none';
-        
-        // Show the AR content container
-        document.getElementById('arContent').style.display = 'block';
-
-        // Dynamically load A-Frame and MindAR scripts
-        var aframeScript = document.createElement('script');
-        aframeScript.src = 'https://aframe.io/releases/1.4.2/aframe.min.js';
-        aframeScript.onload = function() {
-          // A-Frame is loaded, now load MindAR
-          var mindarScript = document.createElement('script');
-          mindarScript.src = 'https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js';
-          mindarScript.onload = function() {
-            // Both A-Frame and MindAR are loaded, initialize AR scene
-            var arContent = document.getElementById('arContent');
-            arContent.innerHTML = `
-            <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/.mindS/BarcoPirata.mind" smoothing="0.9" searchRegion="0.8 0.8" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-            <a-assets>
-            <img id="card" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/cards/BarcoPirata.png" crossorigin="anonymous" />
-            <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/FewZ2372/Macchiato-tester/assets/Pirata_Barco_Animacion/Pirata_Barco_Animacion.gltf"></a-asset-item>
-
-            </a-assets>
-            <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-            <a-entity light="type: directional; color: #EEE; intensity: 8" position="15 0.3 10"></a-entity>
-            <a-entity light="type: ambient; color: #CCC; intensity: 1;"></a-entity>
-            <a-entity id="targetEntity" mindar-image-target="targetIndex: 0">
-              <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-              <a-gltf-model src="#avatarModel" animation-mixer position="0 0 1" rotation= "0 90 0" scale="1 1 1"></a-gltf-model>
-
-            </a-entity>
-            </a-scene>
-            `;
-                  // Apply styles to the video element after MindAR has initialized
-            applyVideoStyles();
-          };
-          document.head.appendChild(mindarScript);
-        };
-        document.head.appendChild(aframeScript);
-        function applyVideoStyles() {
-        var videoElement = document.querySelector('video');
-        if (videoElement) {
-        videoElement.style.position = 'fixed';
-        videoElement.style.top = '50%';
-        videoElement.style.left = '50%';
-        videoElement.style.transform = 'translate(-50%, -50%)';
-        videoElement.style.width = '100vw';
-        videoElement.style.height = '100vh';
-        videoElement.style.objectFit = 'cover';
-        videoElement.style.zIndex = '-1';
-  } else {
-    // If the video element isn't available yet, try again in a short while
-    setTimeout(applyVideoStyles, 200);
-  }
-}
-      });
-    </script>
+  <script>
+    document.getElementById('startButton').addEventListener('click', function() {
+      document.getElementById('loadingScreen').style.display = 'none';
+      document.getElementById('arContent').style.display = 'block';
+    });
+  </script>
 </body>
 </html>
